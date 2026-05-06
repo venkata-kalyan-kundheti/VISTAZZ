@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  VISTAZ  </title>
+    <link rel="stylesheet" href="project_2.css">
+</head>
+<body>
+ <h2>welcome to VISTAZ</h2>
+
+<div class="container" id="main-container"> 
+  <button class="box" id="newsBtn">
+    <img src="news.png" alt="News">
+    <h3>NEWS</h3>
+  </button>
+
+  <button class="box" id="spaceBtn">
+    <img src="space.jpg" alt="Space">
+    <h3>SPACE</h3>
+  </button>
+
+  <button class="box" id="movieBtn">
+    <img src="movie.jpg" alt="Movies">
+    <h3>MOVIES</h3>
+  </button>
+
+  <button class="box" id="weatherBtn">
+    <img src="weather.png" alt="Weather">
+    <h3>WEATHER</h3>
+  </button>
+</div>
+
+<!-- Weather Section -->
+<div class="section" id="weather-section" style="display: none;">
+  <button class="backBtn">🔙 Back</button>
+  <h3>Enter City Name:</h3>
+  <input type="text" id="cityInput" placeholder="e.g., Delhi">
+  <button onclick="getWeather()">Get Weather</button>
+  <div id="weatherResult"></div>
+</div>
+
+<!-- News Section -->
+<div class="section" id="news-section" style="display: none;">
+  <button class="backBtn">🔙 Back</button>
+  <h3>Top Headlines</h3>
+  <div id="newsResult"></div>
+</div>
+
+<!-- Space Section -->
+<div class="section" id="space-section" style="display: none;">
+  <button class="backBtn">🔙 Back</button>
+  <h3>NASA - Astronomy Picture of the Day</h3>
+  <div id="spaceResult"></div>
+</div>
+
+<!-- Movies Section -->
+<div class="section movies-section" id="movie-section" style="display: none;">
+  <button class="backBtn">🔙 Back</button>
+  <div class="movies-header">
+    <div>
+      <h3>Movies</h3>
+      <p>Trending picks, top rated favorites, and upcoming releases.</p>
+    </div>
+  </div>
+
+  <div class="movies-controls">
+    <div class="movie-search">
+      <input type="text" id="movieSearch" placeholder="Search movies..." autocomplete="off">
+      <span class="movie-search-icon">🔍</span>
+    </div>
+
+    <div class="movie-filters">
+      <select id="movieGenre">
+        <option value="all">All genres</option>
+      </select>
+
+      <div class="movie-chips" role="tablist" aria-label="Movie categories">
+        <button class="movie-chip is-active" data-category="trending" type="button">Trending</button>
+        <button class="movie-chip" data-category="popular" type="button">Popular</button>
+        <button class="movie-chip" data-category="top_rated" type="button">Top Rated</button>
+        <button class="movie-chip" data-category="upcoming" type="button">Upcoming</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="movieStatus" class="movie-status" aria-live="polite"></div>
+  <div id="movieGrid" class="movie-grid"></div>
+
+  <div id="movieLoading" class="movie-loading" aria-hidden="true">
+    <div class="spinner"></div>
+    <span>Loading movies...</span>
+  </div>
+
+  <div id="movieError" class="movie-error" role="alert"></div>
+  <div id="movieScrollSentinel" class="movie-sentinel"></div>
+</div>
+
+<!-- Movie Details Modal -->
+<div class="movie-modal" id="movieModal" aria-hidden="true">
+  <div class="movie-modal__backdrop" data-close="true"></div>
+  <div class="movie-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="movieModalTitle">
+    <button class="movie-modal__close" type="button" aria-label="Close">×</button>
+    <div class="movie-modal__hero">
+      <img id="movieModalImage" alt="">
+    </div>
+    <div class="movie-modal__body">
+      <div class="movie-modal__header">
+        <h3 id="movieModalTitle"></h3>
+        <button class="movie-modal__fav" id="movieModalFav" type="button">Add to Watchlist</button>
+      </div>
+      <div id="movieModalMeta" class="movie-modal__meta"></div>
+      <p id="movieModalOverview" class="movie-modal__overview"></p>
+      <div id="movieModalTags" class="movie-modal__tags"></div>
+    </div>
+  </div>
+</div>
+
+<script src="env.js"></script>
+<script src="project_2.js"></script>
+</body>
+</html>
